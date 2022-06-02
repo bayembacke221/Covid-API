@@ -1,5 +1,6 @@
 package com.example.hospitalapi.appuser;
 
+import com.example.hospitalapi.models.RendezVous;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Getter
 @Setter
@@ -42,6 +44,12 @@ public class AppUser implements UserDetails {
     private AppUserRole appUserRole;
     private Boolean locked=false;
     private Boolean enabled=false;
+
+    @OneToMany(mappedBy="appUser",
+
+            targetEntity=RendezVous.class,
+            fetch=FetchType.EAGER)
+    private List<RendezVous> rendezVous;
 
     public AppUser(String nom,
                    String prenom,

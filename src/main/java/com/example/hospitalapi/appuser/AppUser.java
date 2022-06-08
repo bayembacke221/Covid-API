@@ -1,6 +1,7 @@
 package com.example.hospitalapi.appuser;
 
 import com.example.hospitalapi.models.RendezVous;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ public class AppUser implements UserDetails {
             strategy = GenerationType.SEQUENCE,
             generator = "user_sequence"
     )
-    private Long id;
+    private int id;
     private String nom;
     private String prenom;
     private String email;
@@ -49,6 +50,7 @@ public class AppUser implements UserDetails {
 
             targetEntity=RendezVous.class,
             fetch=FetchType.EAGER)
+    @JsonIgnore
     private List<RendezVous> rendezVous;
 
     public AppUser(String nom,
@@ -111,5 +113,13 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
+    }
+
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
     }
 }

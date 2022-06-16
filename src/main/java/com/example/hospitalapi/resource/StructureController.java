@@ -27,4 +27,14 @@ public class StructureController {
 
         return new ResponseEntity<>(newStructure,HttpStatus.CREATED);
     }
+
+    @GetMapping("/view/allStructure")
+    public ResponseEntity<List<Structure>> getAllStructure(){
+
+
+        List <Structure> listStructures = structureService.findAllStructure();
+
+        return new ResponseEntity<>(listStructures,HttpStatus.OK);
+
+    }
 }

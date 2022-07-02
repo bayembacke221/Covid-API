@@ -26,6 +26,11 @@ public class StructureService {
         return  structureRepository.save(structure);
 
     }
+    public Structure findStructureById(int structure){
+
+        return  structureRepository.findById(structure);
+
+    }
 
     public List<Structure> findAllStructure(){
 
@@ -33,14 +38,11 @@ public class StructureService {
 
     }
 
-    public Structure updateStructure(Structure structure){
+    public  List<Structure> findOneStructur(String keyword){
 
-        return structureRepository.save(structure);
-
-    }
-    public void deleteStructure(int idStructure){
-
-        structureRepository.deleteById(idStructure);
+        return structureRepository.search(keyword);
 
     }
+
+
 }

@@ -1,6 +1,9 @@
 package com.example.hospitalapi.Pojo;
 
+import lombok.Data;
+
 import java.util.Date;
+
 
 public class RendezVousPojo {
     public   int idRendezVous;

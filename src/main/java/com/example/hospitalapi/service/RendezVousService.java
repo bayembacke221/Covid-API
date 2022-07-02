@@ -54,12 +54,14 @@ public class RendezVousService {
         return rendezVousRepository.findAll();
 
     }
+    public  List<RendezVous> findRendezVousUser(int id){
 
-    public RendezVous updateRendezVous(RendezVous rendezVous){
 
-        return rendezVousRepository.save(rendezVous);
 
+        return rendezVousRepository.findRendezVousByUser(id);
     }
+
+
 
     public void deleteRendezVous(int IdRendezVous){
 

@@ -57,4 +57,9 @@ public class AppUserService implements UserDetailsService {
     public AppUser findUserByID(int id){
         return  appUserRepository.findById(id);
     }
+    public AppUser findUserByEmail(String email){
+
+        return appUserRepository.findByEmail(email).orElseThrow(()->new
+                UsernameNotFoundException(String.format(USER_NOT_FOUND_MSG,email)));
+    }
 }

@@ -27,4 +27,11 @@ public class AppUserController {
         return new ResponseEntity<>(appUser, HttpStatus.OK);
 
     }
+    @GetMapping("/find/email/{email}")
+    public ResponseEntity<Integer> findUserByEmail(@PathVariable("email") String email) {
+
+        AppUser appUser = appUserService.findUserByEmail(email);
+        return new ResponseEntity<>(appUser.getId(), HttpStatus.OK);
+
+    }
 }
